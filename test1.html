@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <h2>JavaScript Objects</h2>
+
+    <p id="demo"></p>
+
+    <script>
+
+
+
+
+        const factories = [
+            { name: "BR1", employees: ["John", "Alice", "Bob", "Jessie", "Karen"] },
+            { name: "BR2", employees: ["Jessie", "Karen", "John"] },
+            { name: "BR3", employees: ["Miles", "Eric", "Henry", "Bob"] },
+            { name: "BR4", employees: [] }
+        ];
+
+        let f_len = factories.length;
+
+
+
+
+        // 1. Count Employees Number by Factory // => [ {name: 'BR1', count: 4}, ... ]
+        console.log("1. Count Employees Number by Factory // => [ {name: 'BR1', count: 4}, ... ]");
+        var fac_emp1 = [];
+        for (i = 0; i < f_len; i++) {
+            // fac_emp1.push(factories[i].name);
+            fac_emp1 += '{' + 'name: ' + "'"+ factories[i].name +"'"+' , count: ' + factories[i].employees.length + '}' +','
+        }
+        console.log(fac_emp1.slice(0, -1));
+
+        // 2. Count Factories Number by Employee // => [ {employee: 'John', count: 2}, ... ]
+        console.log("2. Count Factories Number by Employee // => [ {employee: 'John', count: 2}, ... ]");
+        var fac_emp2 = [];
+        for (i = 0; i < f_len; i++) {
+            factories[i].employees.forEach(function (item, index, array) {
+                fac_emp2.push(item);
+            });
+        }
+        // console.log(fac_emp2);
+
+        var result = {};
+        fac_emp2.forEach(function (item) {
+            result[item] = result[item] ? result[item] + 1 : 1;
+        });
+        console.log(result); 
+
+        // 3. Order employees list by alphabetical order // =>   { name: "BR2", employees: ["Jessie", "John", "Karen"] }
+        console.log("3. Order employees list by alphabetical order // =>   { name: 'BR2', employees: ['Jessie', 'John', 'Karen'] }");
+        for (i = 0; i < f_len; i++) {
+            factories[i].employees.sort();
+        }
+        console.log(factories);
+
+
+
+
+        // console.log(Object.values(factories));
+
+    </script>
+</body>
+
+
+</html>
